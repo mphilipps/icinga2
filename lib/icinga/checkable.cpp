@@ -195,7 +195,7 @@ Timestamp Checkable::GetNextUpdate() const
 
 	if (cr) {
 		return GetNextCheck()
-			+ (GetProblem() && GetStateType() == StateTypeSoft ? GetRetryInterval() : GetCheckInterval())
+			+ (GetEnableActiveChecks() && GetProblem() && GetStateType() == StateTypeSoft ? GetRetryInterval() : GetCheckInterval())
 			+ 2 * (cr->GetExecutionEnd() - cr->GetScheduleStart());
 	} else {
 		return GetNextCheck() + GetCheckInterval();
